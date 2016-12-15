@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>TD Christmas Games</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/responsive.css}" />
+<link rel="stylesheet" th:href="@{/css/animate.css}" />
+
+<link
+	href='http://fonts.googleapis.com/css?family=Raleway:400,900,600|Pacifico'
+	rel='stylesheet' type='text/css' />
+
+</head>
+
+<body>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Post a Dare !</h4>
+					<h5 class="modal-title" id="myModalLabel" style="color: red">One
+						and only one Rule: Kill'em all but don't hurt'em!</h5>
+				</div>
+				<form action="#" th:action="@{/create}" method="POST" th:object="${dareForm}">
+				<div class="modal-body" id="myModalBody">
+					<select class="form-control" th:field="${dareForm.friendID}" id="friendselect">
+						<option value="0">Select a Friend</option>
+						<option th:each="friend : ${friend}" th:value="${friend.friendID}"
+							th:text="${friend.name}"></option>
+					</select>
+					<textarea cols="50" rows="6" id="description" th:field="${dareForm.description}" required="true"></textarea>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" class="btn btn-default" value="Post Dare"/>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				</form>
+				<script>
+				</script>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- ===========================
+    HERO SECTION
+    =========================== -->
+	<div id="hero">
+		<div class="redoverlay">
+			<div class="container">
+				<div class="row">
+					<div class="herotext">
+						<h2 class="wow zoomInDown" data-wow-duration="3s">HoHo
+							TD Celebrations has Started!</h2>
+						<h1 class="wow flipInY">It’s The time</h1>
+
+						<a class="btn btn-reverse wow zoomIn" href="#products">
+							<h3>
+								Do your dare <span class="optional">or bang your head!</span>
+							</h3>
+						</a>
+						<!--#NOTE: texts inside the OPTIONAL tag above would be hidden on smaller mobile screens -->
+
+						<p class="wow fadeInUp" data-wow-duration="2s">Offer ends On
+							December 31 Wednesday</p>
+
+						<img class="bigbell wow tada infinite" data-wow-duration="30s"
+							src="img/bell.png" alt="" />
+					</div>
+
+					<div class="santa wow bounceInDown" data-wow-duration="2s">
+						<img src="img/santa.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--HERO SECTION END-->
+
+	<!-- ===========================
+    OVERVIEW SECTION
+    =========================== -->
+	<div id="overview" class="container">
+		<!--SECTIONHEAD START-->
+		<div class="sectionhead">
+			<h2>
+				Best <span class="highlight">free</span> christmas template ever
+			</h2>
+			<p>SantaGo is another free Bootstrap HTML Christmas sales and
+				affiliate page template built and distributed by EvenFly Team as a
+				small Cristmas gift under Creative Commons 3.0 license.</p>
+			<hr />
+		</div>
+		<!--SECTIONHEAD END-->
+
+	</div>
+	<!--OVERVIEW SECTION END-->
+
+	<!-- ===========================
+    CALL-TO-ACTION SECTION
+    =========================== -->
+	<div class="calltoaction">
+		<div class="lightoverlay">
+			<div class="container">
+				<div class="col-md-4">
+					<img src="img/tree.gif" alt="" />
+				</div>
+				<!--CALL-TO-ACTION IMAGE END-->
+
+				<div class="sectionhead content col-md-8">
+					<h2>
+						Best <span class="highlight">free landing page</span> template
+					</h2>
+					<p>
+						SantaGo is another free Christmas sales and affiliate landing page
+						template built and distributed by <a href="http://evenfly.com">EvenFly
+							Team</a> as a small cristmas gift under Creative Commons 3.0 license.
+						If you have any question, suggestion or need assistance, feel free
+						to <a href="mailto:support@venfly.com">email us</a> anytime.
+
+					</p>
+					<a href="#" class="btn btn-large btn-success" data-toggle="modal"
+						data-target="#myModal">Post a dare</a>
+				</div>
+				<!--CALL-TO-ACTION CONTENT END-->
+			</div>
+			<!--CALL-TO-ACTION CONTAINER END-->
+		</div>
+		<!--CALL-TO-ACTION OVERLAY END-->
+	</div>
+	<!--CALL-TO-ACTION END-->
+
+	<!-- ===========================
+    PRODUCTS SECTION
+    =========================== -->
+	<div id="products" class="container">
+
+		<!--SECTIONHEAD START-->
+
+		<div class="sectionhead " th:each="dare : ${dare}">
+			<h3 style="align: left" th:text="${dare.friend.name}" />
+			<p th:text="${dare.description}" />
+		</div>
+		<!--SECTIONHEAD END-->
+		<hr />
+		<!--SEPARETOR LINE-->
+	</div>
+	<!--PRODUCTS SECTION END-->
+
+	<!-- ===========================
+    SUBSCRIBE SECTION
+    =========================== -->
+	<div id="subscribe">
+		<div class="darkoverlay">
+			<div class="container text-center">
+				<img class="santaicon wow tada infinite" data-wow-duration="20s"
+					src="img/santa-sm.png" alt="" />
+				<div class="sectionhead">
+					<h2>Wishing you and your family</h2>
+					<h2>
+						A<span class="highlight">  Merry Christmas </span> and <span class="highlight">a</span> Happy New
+						Year
+					</h2>
+					<p>The start of the New Year is the first chapter of a fresh
+						start. It’s the chance to reflect on the past 365 days while also
+						setting goals to propel you towards success. Maybe in the past
+						year you made an advancement in your career, progress on your
+						health, or met the love of your life—whatever it may be, now’s the
+						time to cherish the memories you made, and think about what could
+						make the next year even better.</p>
+				</div>
+			</div>
+			<!--SUBSCRIBE CONTAINER END-->
+		</div>
+		<!--OVERLAY END-->
+	</div>
+	<!--SUBSCRIBE SECTION END-->
+
+	<!-- ===========================
+    FOOTER
+    =========================== -->
+	<footer class="container text-center">
+		<h2 class="logo">
+			With Love<span class="highlight">TD Santa</span>
+		</h2>
+		<img class="santacap" src="img/santa_cap.png" alt="" />
+		<hr />
+	</footer>
+	<!--FOOTER END-->
+
+	<!-- ===========================
+    SOCIAL ICONS
+    =========================== -->
+	<div class="sticky-container">
+		<ul class="sticky">
+			<li><a href=""> <img title="" alt="" src="img/facebook.svg" />
+					<p>Facebook</p>
+			</a></li>
+
+			<li><a href=""> <img title="" alt="" src="img/twitter.svg" />
+					<p>Twitter</p>
+			</a></li>
+
+			<li><a href=""> <img title="" alt="" src="img/pinterest.svg" />
+					<p>Pinterest</p>
+			</a></li>
+
+			<li><a href=""> <img title="" alt="" src="img/linkedin.svg" />
+					<p>Linkedin</p>
+			</a></li>
+
+			<li><a href=""> <img title="" alt=""
+					src="img/google_plus.svg" />
+					<p>Google Plus</p>
+			</a></li>
+
+			<li><a href=""> <img title="" alt="" src="img/instagram.svg" />
+					<p>Instagram</p>
+			</a></li>
+
+		</ul>
+	</div>
+	<!-- ===========================
+    NECESSARY SCRIPTS
+    =========================== -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="js/evenfly.js"></script>
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/snowstorm-min.js"></script>
+	<script>new WOW().init();</script>
+</body>
+</html>

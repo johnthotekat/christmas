@@ -1,0 +1,11 @@
+com\john\christmas\entity\Friend.class
+com\john\christmas\Application.class
+com\john\christmas\service\FriendService.class
+com\john\christmas\service\DareServiceImpl.class
+com\john\christmas\repository\DareRepository.class
+com\john\christmas\controller\DareController.class
+com\john\christmas\entity\Dare.class
+com\john\christmas\repository\FriendRepository.class
+com\john\christmas\controller\MainController.class
+com\john\christmas\service\DareService.class
+com\john\christmas\service\FriendServiceImpl.class
